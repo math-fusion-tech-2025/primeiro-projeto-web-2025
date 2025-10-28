@@ -1,0 +1,24 @@
+# Regra Geral (Padrão):
+# A @Greice-Lacerda e a dona da raiz e de quaisquer
+# arquivos/pastas sem um dono especifico.
+* @Greice-Lacerda
+
+# ==========================================================
+#  Donos das Pastas Específicas
+# ==========================================================
+# Estas regras substituem a regra geral acima.
+
+/Projeto_GreiceLacerda/  @Greice-Lacerda
+/Projeto_LairaSilva/    @Lairall
+
+# --- AGUARDANDO USERNAMES ---
+# Por favor, substitua os @... pelo username correto de cada pessoa no GitHub
+
+/Projeto_AbelLozano/    @username-do-abel
+/Projeto_AlirioGomez/   @username-do-alirio
+/Projeto_CassianeAlmeida/ @username-da-cassiane
+/Projeto_FlavioLacerda/  @username-do-flavio
+
+/Projeto_SaraVidal/     @username-da-sara
+/Projeto_StellaPederosa/ @username-da-stella
+/Projeto_VanessaMaria/  @username-da-vanessa
