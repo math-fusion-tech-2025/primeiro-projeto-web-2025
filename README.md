@@ -14,6 +14,14 @@ O objetivo deste projeto é aplicar os conceitos básicos de HTML para construir
 
 ## 🏁 Como Visualizar
 
-1.  Clone este repositório (ou baixe os arquivos).
-2.  Encontre o arquivo `index.html` na pasta principal.
-3.  Dê um duplo clique no arquivo `index.html` para abri-lo diretamente no seu navegador web padrão.
+1.  Clone este repositório para sua pasta local.
+
+2. Este repositório está dividido em pastas por membro, acesse as pastas.
+
+3. Porém, as alterações seguem uma regra.
+
+#REGRA PRINCIPAL:
+
+###Cada membro só deve fazer alterações dentro da sua própria pasta.
+Alterações em pastas de outros membros devem ser aprovadas pelo "dono" da pasta através de um Pull Request.
+##
