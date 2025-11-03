@@ -23,5 +23,5 @@ O objetivo deste projeto é aplicar os conceitos básicos de HTML para construir
 # REGRA PRINCIPAL:
 
 ### Cada membro só deve fazer alterações dentro da sua própria pasta.
-Alterações em pastas de outros membros devem ser aprovadas pelo "dono" da pasta através de um Pull Request.
+Alterações em pastas de outros membros devem ser aprovadas pelo "proprietários" da pasta através de um Pull Request.
 ##
