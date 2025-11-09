@@ -1,0 +1,227 @@
+/*
+ * ARQUIVO: estiloContato.css
+ * Projeto: Math Fusion Tech
+ * Foco: Estilização do formulário de contato e da lista de comentários.
+ */
+
+/* Container principal da página */
+.main-contato {
+    max-width: var(--content-width-desktop);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.contato-container,
+.comentarios-container {
+    padding: 1.5rem;
+    background-color: var(--bg-section);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 153, 0.2);
+}
+
+/*
+ * 1. ESTILOS DO FORMULÁRIO (Reutilização + Ajustes)
+ */
+
+.tech-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-light);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(51, 153, 255, 0.5);
+    /* Borda azul neon */
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Botão de Envio */
+.btn.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--bg-dark);
+    background-color: var(--accent-green);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn.btn-primary:disabled {
+    background-color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.btn.btn-primary:hover:not(:disabled) {
+    background-color: #fff;
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+}
+
+/* Loader (Spinner) do Botão */
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--bg-dark);
+    /* Cor roxa */
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mensagens de Status (Sucesso/Erro) */
+.status-message {
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.status-message.success {
+    background-color: rgba(0, 255, 153, 0.1);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+}
+
+.status-message.error {
+    background-color: rgba(255, 51, 51, 0.1);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+}
+
+
+/*
+ * 2. ESTILOS DA LISTA DE COMENTÁRIOS
+ */
+
+.comentarios-container {
+    margin-top: 2rem;
+}
+
+#comentarios-lista {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comentario-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(51, 153, 255, 0.3);
+    /* Borda azul */
+    border-left: 4px solid var(--accent-blue);
+    /* Destaque azul */
+    border-radius: 5px;
+    padding: 1.5rem;
+
+    /* Evita que textos longos quebrem o layout */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.comentario-card blockquote {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.comentario-card cite {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--accent-green);
+    font-family: var(--font-heading);
+}
+
+.error-message {
+    color: var(--accent-red);
+    font-style: italic;
+}
+
+
+/* Link de Voltar */
+.link-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.link-voltar .material-symbols-outlined {
+    margin-right: 0.5rem;
+}
+
+.link-voltar:hover {
+    color: var(--accent-green);
+    text-shadow: none;
+}
+
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .main-contato {
+        padding: 2rem;
+    }
+
+    .contato-container,
+    .comentarios-container {
+        padding: 2.5rem;
+    }
+
+    /* Botão não precisa ter 100% */
+    .btn.btn-primary {
+        width: auto;
+        padding: 1rem 3rem;
+        align-self: flex-start;
+        /* Alinha o botão à esquerda */
+    }
+}

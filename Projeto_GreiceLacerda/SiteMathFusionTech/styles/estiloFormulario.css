@@ -1,0 +1,143 @@
+/*
+ * ARQUIVO: estiloFormulario.css
+ * Projeto: Math Fusion Tech
+ * Foco: Estilização da página de inscrição (com link para Google Form)
+ */
+
+/* Container principal da página de formulário */
+.main-formulario {
+    /* Centraliza o conteúdo (Desktop) */
+    max-width: var(--content-width-desktop);
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: justify;
+}
+
+.form-container {
+    padding: 1.5rem;
+    background-color: var(--bg-section);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 153, 0.2);
+}
+
+/* * NOVOS ESTILOS (para a lista de benefícios)
+ */
+.lista-beneficios {
+    list-style-type: none;
+    /* Remove bullets padrão */
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.lista-beneficios li {
+    position: relative;
+    padding-left: 2rem;
+    /* Espaço para o ícone */
+    margin-bottom: 1rem;
+}
+
+/* Ícone "check" neon */
+.lista-beneficios li::before {
+    content: '✔';
+    /* Símbolo de check */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* * Botão de Envio (Estilo "Tech")
+ * Reutilizado do CSS principal
+ */
+.btn.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: var(--bg-dark);
+    /* Texto roxo escuro */
+    background-color: var(--accent-green);
+    /* Fundo verde neon */
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de Hover no Botão */
+.btn.btn-primary:hover {
+    background-color: #fff;
+    /* Fundo branco no hover */
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+    /* Sombra "Glow" verde */
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+}
+
+/* * NOVO BOTÃO (Google Form Link)
+ */
+.btn-google-form {
+    margin-top: 2rem;
+    /* Espaçamento do texto acima */
+    display: inline-flex;
+    /* Permite alinhar o ícone */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    /* Garante que o 'a' não tenha sublinhado */
+}
+
+/* Ícone de "nova aba" no botão */
+.btn-google-form .material-symbols-outlined {
+    margin-left: 0.75rem;
+    font-size: 1.25rem;
+    /* Um pouco menor que o texto */
+}
+
+/* Link para Voltar */
+.link-voltar {
+    display: inline-flex;
+    /* Alinha o ícone e o texto */
+    align-items: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.link-voltar .material-symbols-outlined {
+    margin-right: 0.5rem;
+}
+
+.link-voltar:hover {
+    color: var(--accent-green);
+    text-shadow: none;
+    /* Remove o glow padrão do link */
+}
+
+/* Responsividade do Formulário */
+@media (min-width: 768px) {
+    .main-formulario {
+        padding: 2rem;
+    }
+
+    .form-container {
+        padding: 2.5rem;
+    }
+
+    /* Em telas maiores, o botão não precisa ter 100% */
+    .btn.btn-primary {
+        width: auto;
+        padding: 1rem 3rem;
+    }
+}
