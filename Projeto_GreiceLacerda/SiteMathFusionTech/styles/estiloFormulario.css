@@ -1,16 +1,16 @@
 /*
  * ARQUIVO: estiloFormulario.css
  * Projeto: Math Fusion Tech
- * Foco: Estilização da página de inscrição (com link para Google Form)
+ * Foco: Estilização do formulário de inscrição (API Google Sheets)
+ * (Substitui o CSS antigo que era apenas para um link)
  */
 
 /* Container principal da página de formulário */
 .main-formulario {
     /* Centraliza o conteúdo (Desktop) */
     max-width: var(--content-width-desktop);
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 1rem;
-    text-align: justify;
 }
 
 .form-container {
@@ -20,41 +20,272 @@
     border: 1px solid rgba(0, 255, 153, 0.2);
 }
 
-/* * NOVOS ESTILOS (para a lista de benefícios)
- */
-.lista-beneficios {
-    list-style-type: none;
-    /* Remove bullets padrão */
-    padding-left: 0;
-    margin-top: 1rem;
+/* Mensagem de Status (Sucesso ou Erro) que aparece no topo */
+.status-message {
+    padding: 0.75rem;
+    /* margin-bottom: 1.5rem; */
+    /* Removido - agora é controlado pelo wrapper */
+    border-radius: 5px;
+    font-weight: 700;
+    text-align: center;
 }
 
-.lista-beneficios li {
+.status-message.success {
+    background-color: rgba(0, 255, 153, 0.2);
+    /* Verde */
+    color: var(--accent-green);
+}
+
+.status-message.error {
+    background-color: rgba(255, 51, 51, 0.2);
+    /* Vermelho */
+    color: var(--accent-red);
+}
+
+
+/* --- Estilos do Formulário (tech-form) --- */
+
+strong{
+    color: deepskyblue;
+}
+
+.tech-form {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* Blocos de Secção (Fieldset) */
+.tech-form fieldset {
+    border: 1px solid rgba(51, 153, 255, 0.3);
+    /* Borda azul neon subtil */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tech-form legend {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    /* Verde neon */
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Grupo de Input (Label + Input) */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label,
+.form-group .label-header {
+    /* .label-header usado para radio/checkbox */
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.75rem;
+}
+
+/* Campos de Input (Texto, Email, Telefone) */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+
+    background-color: #000;
+    border: 2px solid rgba(51, 153, 255, 0.5);
+    /* Borda azul neon */
+    border-radius: 5px;
+    color: var(--text-light);
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+    /* Glow verde */
+}
+
+/* Campos de Texto Longo (Textarea) */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Grid para 2 colunas (ex: Naturalidade e Município) */
+.form-group-grid {
+    display: grid;
+    gap: 1.5rem;
+    /* Espaço entre as colunas */
+}
+
+/* Em telas de tablet ou maiores, divide em 2 colunas */
+@media (min-width: 768px) {
+    .form-group-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* --- Estilos de Botões Radio (Ocupação) --- */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    /* Estilo customizado (aparência "Tech") */
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+
     position: relative;
-    padding-left: 2rem;
-    /* Espaço para o ícone */
-    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
 }
 
-/* Ícone "check" neon */
-.lista-beneficios li::before {
+/* Círculo interno (quando selecionado) */
+.radio-group input[type="radio"]::before {
+    content: '';
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    /* Começa invisível */
+    transition: transform 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked {
+    border-color: var(--accent-green);
+}
+
+.radio-group input[type="radio"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+    /* Aparece */
+}
+
+
+/* --- Estilos de Checkbox (Disponibilidade) --- */
+.horario-grid {
+    display: grid;
+    /* 3 colunas em mobile */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.horario-grid label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-light);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 153, 255, 0.3);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.horario-grid label:hover {
+    background-color: rgba(51, 153, 255, 0.2);
+}
+
+/* Responsividade da Grelha de Horários */
+@media (max-width: 600px) {
+    .horario-grid {
+        /* 2 colunas em telas pequenas */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    .horario-grid {
+        /* 1 coluna em telas muito pequenas */
+        grid-template-columns: 1fr;
+    }
+}
+
+.horario-grid input[type="checkbox"] {
+    /* Estilo customizado (aparência "Tech") */
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--accent-blue);
+    border-radius: 3px;
+
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    /* Impede que o checkbox encolha */
+}
+
+/* Símbolo de "check" (quando selecionado) */
+.horario-grid input[type="checkbox"]::before {
     content: '✔';
     /* Símbolo de check */
-    position: absolute;
-    left: 0;
-    top: 0;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 900;
     color: var(--accent-green);
-    font-weight: 700;
-    font-size: 1.2rem;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease;
 }
 
-/* * Botão de Envio (Estilo "Tech")
- * Reutilizado do CSS principal
- */
+.horario-grid input[type="checkbox"]:checked {
+    border-color: var(--accent-green);
+}
+
+.horario-grid input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* --- Estilos do Botão --- */
+
 .btn.btn-primary {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
+    /* Botão ocupa 100% da largura em mobile */
     padding: 1rem;
+    /* margin-top: 1rem; */
+    /* Removido - agora é controlado pelo wrapper */
 
     font-family: var(--font-heading);
     font-size: 1.25rem;
@@ -72,6 +303,11 @@
     cursor: pointer;
 
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
+    order: 1;
+    /* Botão aparece primeiro */
+    flex-shrink: 0;
+    /* Não encolhe */
 }
 
 /* Efeito de Hover no Botão */
@@ -80,34 +316,40 @@
     /* Fundo branco no hover */
     color: var(--bg-dark);
     transform: translateY(-3px);
-    /* Sombra "Glow" verde */
     box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
 }
 
-/* * NOVO BOTÃO (Google Form Link)
- */
-.btn-google-form {
-    margin-top: 2rem;
-    /* Espaçamento do texto acima */
-    display: inline-flex;
-    /* Permite alinhar o ícone */
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    /* Garante que o 'a' não tenha sublinhado */
+.btn.btn-primary:disabled {
+    background-color: var(--text-secondary);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
-/* Ícone de "nova aba" no botão */
-.btn-google-form .material-symbols-outlined {
-    margin-left: 0.75rem;
-    font-size: 1.25rem;
-    /* Um pouco menor que o texto */
+/* Loader (Spinner) */
+.loader {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 4px solid var(--bg-dark);
+    border-top: 4px solid var(--accent-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* Link para Voltar */
 .link-voltar {
     display: inline-flex;
-    /* Alinha o ícone e o texto */
     align-items: center;
     margin-top: 2rem;
     color: var(--text-secondary);
@@ -122,10 +364,29 @@
 .link-voltar:hover {
     color: var(--accent-green);
     text-shadow: none;
-    /* Remove o glow padrão do link */
 }
 
-/* Responsividade do Formulário */
+
+/* * --- AJUSTE DE LAYOUT (Botão + Mensagem) ---
+ */
+
+.form-submission-area {
+    display: flex;
+    flex-direction: column;
+    /* Empilha (Botão em cima, Mensagem embaixo) em mobile */
+    margin-top: 1rem;
+}
+
+.status-message {
+    order: 2;
+    /* Mensagem aparece em segundo */
+    margin-top: 1rem;
+    /* Espaço entre o botão e a mensagem */
+    flex-basis: 100%;
+    /* Ocupa a largura total */
+}
+
+/* --- Responsividade (Tablet+) --- */
 @media (min-width: 768px) {
     .main-formulario {
         padding: 2rem;
@@ -135,9 +396,29 @@
         padding: 2.5rem;
     }
 
-    /* Em telas maiores, o botão não precisa ter 100% */
+    /* * --- AJUSTE DE LAYOUT (Lado a Lado) ---
+     */
+    .form-submission-area {
+        flex-direction: row;
+        /* Lado a lado em telas maiores */
+        align-items: center;
+        gap: 1.5rem;
+    }
+
     .btn.btn-primary {
         width: auto;
+        /* Botão encolhe para o tamanho do texto */
         padding: 1rem 3rem;
+    }
+
+    .status-message {
+        order: 2;
+        margin-top: 10px;
+        /* Remove o espaço superior */
+        text-align: left;
+        /* Alinha a mensagem à esquerda */
+        width: auto;
+            /* Botão encolhe para o tamanho do texto */
+            padding: 1rem 3rem;
     }
 }

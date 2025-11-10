@@ -15,7 +15,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <title>Contato e Sugestões - Math Fusion Tech</title>
+    <title>Comentários - Math&langle;&langle;Fusion&rangle;&rangle;Tech</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                     alt="Banner do projeto Math Fusion Tech, com o símbolo Pi e formas geométricas sobre um fundo de circuito.">
             </figure>
         </div>
-        
+
         <br>
 
         <h1>Construção de Projetos Web</h1>
@@ -53,10 +53,12 @@
 
             <p>
                 Sua opinião é fundamental para o crescimento deste projeto. Por favor, compartilhe suas ideias,
-                sugestões ou feedback. Os comentários aprovados serão exibidos publicamente.
+                sugestões ou feedback. Os comentários sinalizados como "Aprovado" na nossa planilha serão exibidos
+                publicamente abaixo.
             </p>
 
             <form id="form-contato" class="tech-form">
+                <!-- (O formulário continua o mesmo...) -->
                 <div class="form-group">
                     <label for="nome-contato">Seu Nome:</label>
                     <input type="text" id="nome-contato" class="form-control"
@@ -80,7 +82,7 @@
 
         <hr>
 
-        <!-- Seção 2: Exibição de Comentários Aprovados -->
+        <!-- Seção 2: Exibição de Comentários Aprovados  -->
         <section class="comentarios-container">
             <div class="section-header">
                 <span class="material-symbols-outlined icon-module">
@@ -90,16 +92,18 @@
             </div>
 
             <div id="comentarios-lista">
-                <!-- Comentários do Firestore serão inseridos aqui -->
+                <!-- O JavaScript irá carregar os comentários aqui -->
+                <p id="loader-comentarios" class="loader-comentarios-texto">
+                    <span class="loader-inline"></span>
+                    Carregando comentários aprovados...
+                </p>
 
-                <!-- ERRO CRÍTICO 3 (Corrigido): 'classid' alterado para 'id' -->
-                <p id="loader-comentarios">Carregando comentários...</p>
             </div>
-
         </section>
 
-        <!-- Voltar - CAMINHO CORRIGIDO -->
-        <a href="./index.html" class="link-voltar">
+
+        <!-- Link para Voltar -->
+        <a href="../index.html" class="link-voltar">
             <span class="material-symbols-outlined">
                 arrow_back
             </span>
@@ -115,17 +119,11 @@
         <p class="copyright">
             &copy; Construção de Projetos Web - UERJ - 2025
         </p>
-
-        <!-- ERRO CRÍTICO 4 (Corrigido): Removida a tag <warning> e fechado o <p> -->
         <p>
             Material desenvolvido para fins didáticos.
         </p>
     </footer>
 
-    <!-- 
-      ERRO CRÍTICO 1 (Corrigido): Adicionado 'type="module"'
-      ERRO CRÍTICO 2 (Corrigido): Corrigidos os caminhos e nomes dos arquivos
-    -->
     <script type="module" src="../logic/comentarios.js" defer></script>
     <script type="module" src="../logic/fireBaseConfig.js" defer></script>
 
